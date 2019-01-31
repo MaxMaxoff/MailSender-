@@ -17,7 +17,7 @@ namespace TestConsole
             message.To.Add("@gmail.com");
 
             message.Subject = "Сообщение от ConsoleApp";
-            message.Body = "Текст сообщения";
+            message.Body = "Текст сообщения.";
             message.IsBodyHtml = false;
 
             SmtpClient client = new SmtpClient("smtp.yandex.ru", 465);
