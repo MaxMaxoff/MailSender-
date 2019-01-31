@@ -13,8 +13,8 @@ namespace TestConsole
         static void Main(string[] args)
         {
             MailMessage message = new MailMessage();
-            message.From = new MailAddress("toropov@club.info", "Maxim Toropov");
-            message.To.Add("maxim.vt@gmail.com");
+            message.From = new MailAddress("@club.info", "Maxim Toropov");
+            message.To.Add("@gmail.com");
 
             message.Subject = "Сообщение от ConsoleApp";
             message.Body = "Текст сообщения";
