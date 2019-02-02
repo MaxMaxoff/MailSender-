@@ -8,59 +8,59 @@ namespace WpfTestMailSender
 {
     public class MessageSettings
     {
-        public string messageFrom; // = "Maxim Toropov";
-        public string mailFrom; // = "@yandex.ru";
-        public string messageTo; // = "@gmail.com";
-        public string messageSubject; // = "Subject";
-        public string messageBody; // = "Body Message";
+        private string messageFrom; // = "Maxim Toropov";
+        private string mailFrom; // = "@yandex.ru";
+        private string messageTo; // = "@gmail.com";
+        private string messageSubject; // = "Subject";
+        private string messageBody; // = "Body Message";
 
-        public bool isMessageBodyHTML; // = false;
+        private bool isMessageBodyHTML; // = false;
 
-        //public string MessageFrom
-        //{
-        //    get { return MessageFrom1; }
-        //    set { MessageFrom1 = value; }
-        //}
+        public string MessageFrom
+        {
+            get { return messageFrom; }
+            set { messageFrom = value; }
+        }
 
-        //public string MailFrom
-        //{
-        //    get { return mailFrom; }
-        //    set { mailFrom = value; }
-        //}
+        public string MailFrom
+        {
+            get { return mailFrom; }
+            set { mailFrom = value; }
+        }
 
-        //public string MessageTo
-        //{
-        //    get { return messageTo; }
-        //    set { messageTo = value; }
-        //}
+        public string MessageTo
+        {
+            get { return messageTo; }
+            set { messageTo = value; }
+        }
 
-        //public string MessageSubject
-        //{
-        //    get { return messageSubject; }
-        //    set { messageSubject = value; }
-        //}
+        public string MessageSubject
+        {
+            get { return messageSubject; }
+            set { messageSubject = value; }
+        }
 
-        //public string MessageBody
-        //{
-        //    get { return messageBody; }
-        //    set { messageBody = value; }
-        //}
+        public string MessageBody
+        {
+            get { return messageBody; }
+            set { messageBody = value; }
+        }
 
-        //public bool IsMessageBodyHTML
-        //{
-        //    get { return isMessageBodyHTML; }
-        //    set { isMessageBodyHTML = value; }
-        //}
-        
+        public bool IsMessageBodyHTML
+        {
+            get { return isMessageBodyHTML; }
+            set { isMessageBodyHTML = value; }
+        }
+
         public MessageSettings(string messageFrom, string mailFrom, string messageTo, string messageSubject, string messageBody, bool isMessageBodyHTML)
         {
-            this.messageFrom = messageFrom;
-            this.mailFrom = mailFrom;
-            this.messageTo = messageTo;
-            this.messageSubject = messageSubject;
-            this.messageBody = messageBody;
+            MessageFrom = messageFrom;
+            MailFrom = mailFrom;
+            MessageTo = messageTo;
+            MessageSubject = messageSubject;
+            MessageBody = messageBody;
 
-            this.isMessageBodyHTML = isMessageBodyHTML;
+            IsMessageBodyHTML = isMessageBodyHTML;
         }
         
     }

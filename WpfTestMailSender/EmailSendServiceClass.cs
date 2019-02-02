@@ -13,13 +13,15 @@ namespace WpfTestMailSender
     {
         public static void SendMessage(MailMessage message, string user_name, SecureString user_password)
         {
-                using (SmtpClient client = new SmtpClient(ServerSettings.serverAddress, ServerSettings.serverPort))
-                {
-                    client.EnableSsl = true;
-                    client.Credentials = new NetworkCredential(user_name, user_password);
+            ServerSettings serverSettings = new ServerSettings();
 
-                    client.Send(message);
-}
+            using (SmtpClient client = new SmtpClient(serverSettings.ServerAddress, serverSettings.ServerPort))
+            {
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential(user_name, user_password);
+
+                client.Send(message);
+            }
         }
     }
 }
