@@ -8,8 +8,8 @@ namespace WpfTestMailSender
 {
     public class ServerSettings
     {
-        private static string serverAddress; // = "smtp.yandex.ru";
-        private static int serverPort; // = 25;
+        private string serverAddress; // = "smtp.yandex.ru";
+        private int serverPort; // = 25;
 
         public string ServerAddress
         {
