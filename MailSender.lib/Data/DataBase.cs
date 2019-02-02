@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MailSender.lib.Data
 {
-    class DataBase
+    public class DataBase
     {
     }
 }

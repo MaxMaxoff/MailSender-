@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MailSender.lib
 {
-    class Scheduler
+    public class Scheduler
     {
     }
 }
