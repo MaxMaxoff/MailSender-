@@ -26,11 +26,11 @@ namespace WpfTestMailSender
 
             using (MailMessage message = new MailMessage())
             {
-                message.From = new MailAddress(messageForm.mailFrom, messageForm.messageFrom);
-                message.To.Add(messageForm.messageTo);
-                message.Subject = messageForm.messageSubject;
-                message.Body = messageForm.messageBody;
-                message.IsBodyHtml = messageForm.isMessageBodyHTML;
+                message.From = new MailAddress(messageForm.MailFrom, messageForm.MessageFrom);
+                message.To.Add(messageForm.MessageTo);
+                message.Subject = messageForm.MessageSubject;
+                message.Body = messageForm.MessageBody;
+                message.IsBodyHtml = messageForm.IsMessageBodyHTML;
 
                 try
                 {
