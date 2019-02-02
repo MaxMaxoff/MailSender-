@@ -4,6 +4,10 @@ using System.Net;
 using System.Net.Mail;
 using System.Security;
 
+/// <summary>
+/// Maxim Toropov
+/// HomeWork1
+/// </summary>
 namespace WpfTestMailSender
 {
     /// <summary>
