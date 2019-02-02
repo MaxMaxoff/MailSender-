@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTestMailSender"
         mc:Ignorable="d"
-        Title="WpfTest MailSender " Height="450" Width="800">
+        Title="WpfTest MailSender " Height="397" Width="399">
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Left" Margin="5,287,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxUserName" HorizontalAlignment="Left" Height="23" Margin="5,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
+        <TextBlock HorizontalAlignment="Left" Margin="199,287,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" RenderTransformOrigin="4.865,-3.383"/>
+        <PasswordBox x:Name="pbxPassword" HorizontalAlignment="Left" Margin="199,308,0,0" VerticalAlignment="Top" Width="182" Height="23"/>
+        <Button Content="Отправить" HorizontalAlignment="Left" Margin="155,336,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,125,0,0" TextWrapping="Wrap" Text="Заголовок" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxSubject" HorizontalAlignment="Left" Height="23" Margin="10,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,169,0,0" TextWrapping="Wrap" Text="Сообщение" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxMessageBody" HorizontalAlignment="Left" Height="92" Margin="10,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="371"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Кому" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxMessageTo" HorizontalAlignment="Left" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
