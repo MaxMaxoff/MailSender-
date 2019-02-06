@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
-        xmlns:debug="clr-namespace:MailSender.lib.Data.Debug;assembly=MailSender.lib"
-        
+        xmlns:dd="clr-namespace:MailSender.lib.Data.DebugData;assembly=MailSender.lib"
         Title="Mail Sender" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -38,7 +37,7 @@
                         <ToolBar Band="0">
                             <TextBlock Text="Сервера:" Margin="25,0,0,0" VerticalAlignment="Center"/>
                             <ComboBox MinWidth="170" MaxWidth="200" SelectedItem="0"
-                                ItemsSource="{x:Static debug:Servers.Items}"
+                                ItemsSource="{x:Static dd:Servers.Items}"
                                 DisplayMemberPath="Name">
                             </ComboBox>
                             <Button ToolTip="Добавить">
@@ -54,9 +53,9 @@
                         <ToolBar Band="1">
                             <TextBlock Text="Отправители:" VerticalAlignment="Center"/>
                             <ComboBox MinWidth="170" MaxWidth="200" SelectedItem="0"
-                                      ItemsSource="{x:Static debug:Senders.Items}">
+                                      ItemsSource="{x:Static dd:Senders.Items}">
                                 <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type debug:Sender}">
+                                    <DataTemplate DataType="{x:Type dd:Senders}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}"/>
                                             <TextBlock Text="{Binding Address}" Margin="5,0,0,0" Opacity="0.6"/>

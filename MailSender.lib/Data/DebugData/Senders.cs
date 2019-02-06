@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace MailSender.lib.Data.Debug
+namespace MailSender.lib.Data.DebugData
 {
     public static class Senders
     {

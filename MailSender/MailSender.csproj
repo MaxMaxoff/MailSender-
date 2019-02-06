@@ -114,17 +114,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MailSender.lib\MailSender.lib.csproj">
-      <Project>{97935e65-9d9f-4e55-a7eb-8225425ce2b2}</Project>
-      <Name>MailSender.lib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Src\add.png" />
     <Resource Include="Src\clock.png" />
     <Resource Include="Src\edit.png" />
     <Resource Include="Src\remove.png" />
     <Resource Include="Src\scheduler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MailSender.lib\MailSender.lib.csproj">
+      <Project>{cedd5452-ec4c-4255-b941-6db87ed85b98}</Project>
+      <Name>MailSender.lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
