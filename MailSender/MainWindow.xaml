@@ -25,10 +25,15 @@
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock Text="Готов"/>
         </StatusBar>
-        <TabControl>
+        <TabControl Margin="0,3,0,-3">
             <TabItem Header="Списки">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
+                        <ToolBarTray.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Height" Value="16"/>
+                            </Style>
+                        </ToolBarTray.Resources>
                         <ToolBar Band="0">
                             <TextBlock Text="Сервера:" Margin="25,0,0,0" VerticalAlignment="Center"/>
                             <ComboBox MinWidth="170" MaxWidth="200" SelectedItem="0">
@@ -36,9 +41,15 @@
                                 <ComboBoxItem>Сервер 2</ComboBoxItem>
                                 <ComboBoxItem>Сервер 3</ComboBoxItem>
                             </ComboBox>
-                            <Button Content="Добавить"/>
-                            <Button Content="Редактировать"/>
-                            <Button Content="Удалить"/>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Src/add.png"></Image>
+                            </Button>
+                            <Button ToolTip="Редактирвоать">
+                                <Image Source="Src/edit.png"></Image>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Src/remove.png"></Image>
+                            </Button>
                         </ToolBar>
                         <ToolBar Band="1">
                             <TextBlock Text="Отправители:" VerticalAlignment="Center"/>
@@ -47,19 +58,34 @@
                                 <ComboBoxItem>Сервер 2</ComboBoxItem>
                                 <ComboBoxItem>Сервер 3</ComboBoxItem>
                             </ComboBox>
-                            <Button Content="Добавить"/>
-                            <Button Content="Редактировать"/>
-                            <Button Content="Удалить"/>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Src/add.png"></Image>
+                            </Button>
+                            <Button ToolTip="Редактирвоать">
+                                <Image Source="Src/edit.png"></Image>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Src/remove.png"></Image>
+                            </Button>
                         </ToolBar>
                         <ToolBar>
                             <TextBlock Text="Перейти в планировщик:" VerticalAlignment="Center"/>
-                            <Button Content="Перейти"/>
+                            <Button ToolTip="Планировщик">
+                                <Image Source="Src/clock.png"></Image>
+                            </Button>
                         </ToolBar>
                     </ToolBarTray>
                     <Grid></Grid>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Планировщик"></TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Планировщик"></TextBlock>
+                        <Image Width="16" Source="Src/scheduler.png" Margin="5,0,0,0"></Image>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
             <TabItem Header="Редактор писем"></TabItem>
             <TabItem Header="Статистика"></TabItem>
         </TabControl>
