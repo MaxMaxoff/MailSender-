@@ -119,7 +119,6 @@
       <Name>MailSender.lib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Src\add.png" />
     <Resource Include="Src\clock.png" />
