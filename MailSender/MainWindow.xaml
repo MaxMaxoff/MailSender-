@@ -75,7 +75,15 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <Grid></Grid>
+                    <GroupBox Header="Список получателей писем">
+                        <DataGrid AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" MinWidth="40"/>
+                                <DataGridTextColumn Header="Name" Width="*"/>
+                                <DataGridTextColumn Header="Address" MinWidth="200"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
                 </DockPanel>
             </TabItem>
             <TabItem>
@@ -85,9 +93,36 @@
                         <Image Width="16" Source="Src/scheduler.png" Margin="5,0,0,0"></Image>
                     </StackPanel>
                 </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <Calendar></Calendar>
+                        <TextBlock Text="Время"></TextBlock>
+                        <TextBox></TextBox>
+                        <Button>Запланировать</Button>
+                        <Button>Отправить сейчас</Button>
+                    </StackPanel>
+                    <GroupBox Grid.Column="1" Header="Задачи планировщика">
+                        <ListBox></ListBox>
+                    </GroupBox>
+                </Grid>
             </TabItem>
-            <TabItem Header="Редактор писем"></TabItem>
-            <TabItem Header="Статистика"></TabItem>
+            <TabItem Header="Редактор писем">
+                <DockPanel>
+                    <GroupBox Header="Письма">
+                        <DockPanel MinWidth="150" MaxWidth="200">
+                            <Button DockPanel.Dock="Bottom">Создать</Button>
+                            <Button DockPanel.Dock="Bottom">Сохранить</Button>
+                            <ListBox></ListBox>
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox Header="Текс письма"></GroupBox>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Статистика" IsEnabled="False"></TabItem>
         </TabControl>
     </DockPanel>
 </Window>
