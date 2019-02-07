@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MailSender
 {
@@ -23,6 +13,42 @@ namespace MailSender
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OnForward(object sender, EventArgs e)
+        {
+            if (MainTabControl.SelectedIndex > 0)
+            MainTabControl.SelectedIndex--;
+        }
+
+        private void OnBackward(object sender, EventArgs e)
+        {
+            if (MainTabControl.SelectedIndex < MainTabControl.Items.Count)
+            MainTabControl.SelectedIndex++;
+        }
+
+        private void OpenSchedulerClick(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedItem = TabScheduler;
+        }
+
+        private void SendNowClick(object sender, RoutedEventArgs e)
+        {
+            if (IsRichTextBoxEmpty(MessageTextRTB))
+            {
+                MainTabControl.SelectedItem = EditorTab;
+                MessageBox.Show("Письмо не заполнено!", "Ошибка!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            MessageBox.Show("Письмо отправлено!", "Успех!",
+                MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public bool IsRichTextBoxEmpty(RichTextBox rtb)
+        {
+            string text = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text;
+            return String.IsNullOrWhiteSpace(text);
         }
     }
 }
