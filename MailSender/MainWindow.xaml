@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
         xmlns:dd="clr-namespace:MailSender.lib.Data.DebugData;assembly=MailSender.lib"
+        xmlns:linq2Sql="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         Title="Mail Sender" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -21,11 +22,17 @@
             <MenuItem Header="Справка" IsEnabled="False">
                 <MenuItem Header="О программе..." IsEnabled="False"/>
             </MenuItem>
+            <ToolBar Band="1"
+                     xmlns:c="clr-namespace:MailSender.Controls">
+                <c:TabViewManager Width="200"
+                                  Forward="OnForward"
+                                  Backward="OnBackward"/>
+            </ToolBar>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock Text="Готов"/>
         </StatusBar>
-        <TabControl Margin="0,3,0,-3">
+        <TabControl Name="MainTabControl">
             <TabItem Header="Списки">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
@@ -81,11 +88,19 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Список получателей писем">
-                        <DataGrid AutoGenerateColumns="False">
+                        <GroupBox.Resources>
+                            <linq2Sql:MailDataBaseContext x:Key="MailData"/>
+                        </GroupBox.Resources>
+                        <DataGrid AutoGenerateColumns="False"
+                                  HorizontalGridLinesBrush="{x:Null}"
+                                  VerticalGridLinesBrush="DarkGray"
+                                  AlternatingRowBackground="LightGray"
+                                  IsReadOnly="True"
+                                  ItemsSource="{Binding Recipient, Source={StaticResource MailData}}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" MinWidth="40"/>
-                                <DataGridTextColumn Header="Name" Width="*"/>
-                                <DataGridTextColumn Header="Address" MinWidth="200"/>
+                                <DataGridTextColumn Header="#" MinWidth="30" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="Адрес" MinWidth="200" Binding="{Binding Address}"/>
+                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>
@@ -111,7 +126,28 @@
                         <Button>Отправить сейчас</Button>
                     </StackPanel>
                     <GroupBox Grid.Column="1" Header="Задачи планировщика">
-                        <ListBox></ListBox>
+                        <ListBox ItemsSource="{x:Static dd:SchedulerTasks.Items}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="{x:Type dd:SchedulerTask}">
+                                    <GroupBox>
+                                        <GroupBox.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Name}"/>
+                                                <TextBlock>:</TextBlock>
+                                                <TextBlock Text="{Binding Time, StringFormat=D, ConverterCulture=ru-ru}"/>
+                                                <TextBlock Text="{Binding Time, StringFormat=T, ConverterCulture=ru-ru}"/>
+                                            </StackPanel>
+                                        </GroupBox.Header>
+                                        <TextBlock Text="{Binding Mail}"/>
+                                    </GroupBox>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </GroupBox>
                 </Grid>
             </TabItem>
