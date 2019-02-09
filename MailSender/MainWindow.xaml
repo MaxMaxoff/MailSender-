@@ -7,7 +7,9 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:dd="clr-namespace:MailSender.lib.Data.DebugData;assembly=MailSender.lib"
         xmlns:linq2Sql="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MailSender.MainWindow"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:views="clr-namespace:MailSender.Views"
+        x:Class="MailSender.MainWindow"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="450" Width="800">
     <Window.Resources>
@@ -108,21 +110,9 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <GroupBox Header="Список получателей писем">
-
-                        <DataGrid AutoGenerateColumns="False"
-                                  HorizontalGridLinesBrush="{x:Null}"
-                                  VerticalGridLinesBrush="DarkGray"
-                                  AlternatingRowBackground="LightGray"
-                                  IsReadOnly="True"
-                                  ItemsSource="{Binding Recipients}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="#" MinWidth="30" Binding="{Binding Id}"/>
-                                <DataGridTextColumn Header="Адрес" MinWidth="200" Binding="{Binding Address}"/>
-                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </GroupBox>
+                    <Grid>
+                        <views:RecipientsView/>
+                    </Grid>
                 </DockPanel>
             </TabItem>
             <TabItem x:Name="TabScheduler">
