@@ -30,7 +30,7 @@ namespace MailSender.ViewModel
             // SimpleIoc.Default.Register<IRecipientsData, InMemoryRecipientsData>();
             SimpleIoc.Default.Register<IRecipientsData, InLinq2SQLRecipientsData>();
             if (!SimpleIoc.Default.IsRegistered<MailDataBaseContext>())
-                SimpleIoc.Default.Register<MailDataBaseContext>();
+                SimpleIoc.Default.Register(() => new MailDataBaseContext());
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
