@@ -46,7 +46,7 @@ namespace MailSender.lib.Data.Linq2SQL
 
         public void SaveChanges()
         {
-
+            _db.SubmitChanges();
         }
     }
 }
