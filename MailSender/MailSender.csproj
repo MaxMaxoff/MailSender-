@@ -134,13 +134,12 @@
       <Project>{cedd5452-ec4c-4255-b941-6db87ed85b98}</Project>
       <Name>MailSender.lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PasswordServiceLib\PasswordServiceLib.csproj">
-      <Project>{ba748715-648f-4779-b1e2-4d3ed5d3e381}</Project>
-      <Name>PasswordServiceLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Src\mail-send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

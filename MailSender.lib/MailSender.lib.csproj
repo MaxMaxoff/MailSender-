@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PasswordServiceLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PasswordServiceLib\PasswordServiceLib\bin\Release\PasswordServiceLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -60,12 +64,6 @@
     </Compile>
     <Compile Include="Scheduler.cs" />
     <Compile Include="Service\PasswordService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PasswordServiceLib\PasswordServiceLib.csproj">
-      <Project>{ba748715-648f-4779-b1e2-4d3ed5d3e381}</Project>
-      <Name>PasswordServiceLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
