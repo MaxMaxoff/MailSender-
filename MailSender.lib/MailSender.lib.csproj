@@ -50,12 +50,17 @@
     <Compile Include="Data\DebugData\SchedulerTasks.cs" />
     <Compile Include="Data\DebugData\Senders.cs" />
     <Compile Include="Data\DebugData\Servers.cs" />
+    <Compile Include="Data\InMemory\InMemoryRecipientsData.cs" />
+    <Compile Include="Data\Linq2SQL\InLinq2SQLRecipientsData.cs" />
     <Compile Include="Data\Linq2SQL\MailDataBase.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MailDataBase.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IRecipientsData.cs" />
     <Compile Include="MailService.cs" />
+    <Compile Include="MVVM\Command.cs" />
+    <Compile Include="MVVM\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

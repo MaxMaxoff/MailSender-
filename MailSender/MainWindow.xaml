@@ -2,13 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         xmlns:local="clr-namespace:MailSender"
         xmlns:dd="clr-namespace:MailSender.lib.Data.DebugData;assembly=MailSender.lib"
         xmlns:linq2Sql="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="MailSender.MainWindow"
-        mc:Ignorable="d"
-        Title="Mail Sender" Height="450" Width="800">
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
+        Title="{Binding Title}" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -24,16 +24,14 @@
             <MenuItem Header="Справка" IsEnabled="False">
                 <MenuItem Header="О программе..." IsEnabled="False"/>
             </MenuItem>
-            <ToolBar
-                     xmlns:c="clr-namespace:MailSender.Controls" Band="1"
-                     >
+            <ToolBar xmlns:c="clr-namespace:MailSender.Controls" Band="1">
                 <c:TabViewManager Width="200"
                                   Forward="OnForward"
                                   Backward="OnBackward"/>
             </ToolBar>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
-            <TextBlock Text="Готов"/>
+            <TextBlock Text="{Binding Status}"/>
         </StatusBar>
         <TabControl x:Name="MainTabControl">
             <TabItem Header="Списки">
@@ -100,15 +98,13 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Список получателей писем">
-                        <GroupBox.Resources>
-                            <linq2Sql:MailDataBaseContext x:Key="MailData"/>
-                        </GroupBox.Resources>
+
                         <DataGrid AutoGenerateColumns="False"
                                   HorizontalGridLinesBrush="{x:Null}"
                                   VerticalGridLinesBrush="DarkGray"
                                   AlternatingRowBackground="LightGray"
                                   IsReadOnly="True"
-                                  ItemsSource="{Binding Recipient, Source={StaticResource MailData}}">
+                                  ItemsSource="{Binding Recipients}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="#" MinWidth="30" Binding="{Binding Id}"/>
                                 <DataGridTextColumn Header="Адрес" MinWidth="200" Binding="{Binding Address}"/>
