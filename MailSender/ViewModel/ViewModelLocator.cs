@@ -27,6 +27,8 @@ namespace MailSender.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<MainWindowViewModel>();
+            SimpleIoc.Default.Register<ServersViewModel>();
+            SimpleIoc.Default.Register<SendersViewModel>();
             
             // InMemory for Debug
             SimpleIoc.Default.Register<IRecipientsData, InMemoryRecipientsData>();
@@ -47,6 +49,8 @@ namespace MailSender.ViewModel
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
         public MainWindowViewModel MainWindowModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
+        public ServersViewModel ServersModel => ServiceLocator.Current.GetInstance<ServersViewModel>();
+        public SendersViewModel SendersModel => ServiceLocator.Current.GetInstance<SendersViewModel>();
         
         public static void Cleanup()
         {

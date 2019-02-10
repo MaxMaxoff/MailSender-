@@ -93,6 +93,8 @@
     <Compile Include="ViewModels\TestVeiwModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\SendersViewModel.cs" />
+    <Compile Include="ViewModel\ServersViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\RecipientsEditor.xaml.cs">
       <DependentUpon>RecipientsEditor.xaml</DependentUpon>
@@ -156,20 +158,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Src\add.png" />
-    <Resource Include="Src\clock.png" />
-    <Resource Include="Src\edit.png" />
-    <Resource Include="Src\remove.png" />
-    <Resource Include="Src\scheduler.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MailSender.lib\MailSender.lib.csproj">
       <Project>{cedd5452-ec4c-4255-b941-6db87ed85b98}</Project>
       <Name>MailSender.lib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Src\mail-send.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

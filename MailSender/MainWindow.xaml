@@ -5,13 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:MailSender"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
-        xmlns:dd="clr-namespace:MailSender.lib.Data.DebugData;assembly=MailSender.lib"
         xmlns:linq2Sql="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:views="clr-namespace:MailSender.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         x:Class="MailSender.MainWindow"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="450" Width="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding UpdateServersCommand}"/>
+            <i:InvokeCommandAction Command="{Binding UpdateSendersCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Window.Resources>
         <Style TargetType="{x:Type fa:ImageAwesome}">
             <Setter Property="Height" Value="16"/>
@@ -51,20 +57,20 @@
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
                         <ToolBarTray.Resources>
-                            <Style TargetType="{x:Type Image}">
+                            <Style TargetType="{x:Type fa:ImageAwesome}">
                                 <Setter Property="Height" Value="16"/>
                             </Style>
                         </ToolBarTray.Resources>
-                        <ToolBar Band="0">
+                        <ToolBar Band="0">    
                             <TextBlock Text="Сервера:" Margin="25,0,0,0" VerticalAlignment="Center"/>
-                            <ComboBox MinWidth="170" MaxWidth="200" SelectedItem="0"
-                                ItemsSource="{x:Static dd:Servers.Items}">
+                            <ComboBox MinWidth="170" MaxWidth="200"
+                                      SelectedItem="0" ItemsSource="{Binding DataContext.Servers, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                 <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type dd:Server}">
+                                    <DataTemplate DataType="{x:Type linq2Sql:Server}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}"/>
                                             <TextBlock Text="{Binding Address}" Margin="5,0,0,0" Opacity="0.6"/>
-                                            <TextBlock><Run Text=":"/></TextBlock>
+                                            <TextBlock>:</TextBlock>
                                             <TextBlock Text="{Binding Port}" Opacity="0.6"/>
                                         </StackPanel>
                                     </DataTemplate>
@@ -83,9 +89,9 @@
                         <ToolBar Band="1">
                             <TextBlock Text="Отправители:" VerticalAlignment="Center"/>
                             <ComboBox MinWidth="170" MaxWidth="200" SelectedItem="0"
-                                      ItemsSource="{x:Static dd:Senders.Items}">
+                                      ItemsSource="{Binding DataContext.Senders, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                 <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type dd:Senders}">
+                                    <DataTemplate DataType="{x:Type linq2Sql:Sender}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}"/>
                                             <TextBlock Text="{Binding Address}" Margin="5,0,0,0" Opacity="0.6"/>
@@ -105,7 +111,8 @@
                         </ToolBar>
                         <ToolBar>
                             <TextBlock Text="Перейти в планировщик:" VerticalAlignment="Center"/>
-                            <Button ToolTip="Планировщик" Click="OpenSchedulerClick">
+                            <!--<Button ToolTip="Планировщик" Click="OpenSchedulerClick">-->
+                            <Button ToolTip="Планировщик">
                                 <fa:ImageAwesome Icon="ClockOutline"/>
                             </Button>
                         </ToolBar>
@@ -127,7 +134,7 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Планировщик"/>
-                        <Image Width="16" Source="Src/scheduler.png" Margin="5,0,0,0"/>
+                        <fa:ImageAwesome Icon="ClockOutline" Margin="5,0,0,0"/>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
@@ -143,19 +150,19 @@
                         <Button Click="SendNowClick">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Отправить сейчас"/>
-                                <Image Width="16" Source="Src/mail-send.png" Margin="5,0,0,0"/>
+                                <fa:ImageAwesome Icon="SendOutline" Margin="5,0,0,0"/>
                             </StackPanel>
                         </Button>
                     </StackPanel>
                     <GroupBox Grid.Column="1" Header="Задачи планировщика">
-                        <ListBox ItemsSource="{x:Static dd:SchedulerTasks.Items}">
+                        <ListBox ItemsSource="{Binding SchedulerTasks}">
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                                 </Style>
                             </ListBox.ItemContainerStyle>
                             <ListBox.ItemTemplate>
-                                <DataTemplate DataType="{x:Type dd:SchedulerTask}">
+                                <DataTemplate DataType="{x:Type linq2Sql:SchedulerTask}">
                                     <GroupBox>
                                         <GroupBox.Header>
                                             <StackPanel Orientation="Horizontal">

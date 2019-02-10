@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -14,7 +9,8 @@ namespace MailSender.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private IRecipientsData _RecipientsData;
+
+        #region Window Title
 
         /// <summary>
         /// Title of Window
@@ -26,6 +22,10 @@ namespace MailSender.ViewModel
             set => Set(ref _Title, value);
         }
 
+        #endregion
+
+        #region Window Status
+
         /// <summary>
         /// Status of Window
         /// </summary>
@@ -34,14 +34,25 @@ namespace MailSender.ViewModel
         {
             get => _Status;
             set => Set(ref _Status, value);
-        }
+        }        
 
+        #endregion
+
+        #region RecipientsData
+
+        private IRecipientsData _RecipientsData;
         public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
 
         /// <summary>
         /// Command for update Recipient window area
         /// </summary>
         public ICommand UpdateRecipientsCommand { get; }
+
+        /// <summary>
+        /// Command for update Recipient data
+        /// </summary>
+        public ICommand SaveRecipientCommand { get; }
+
         private bool CanUpdateRecipientsCommandExecuted() => true;
         private void OnUpdateRecipientsCommandExecuted()
         {
@@ -61,20 +72,23 @@ namespace MailSender.ViewModel
         }
 
         /// <summary>
-        /// Command for update Recipient data
-        /// </summary>
-        public ICommand SaveRecipientCommand { get; }
-
-        /// <summary>
         /// Main Window View Model
         /// </summary>
         /// <param name="RecipientsData"></param>
         public MainWindowViewModel(IRecipientsData RecipientsData)
         {
-            
             UpdateRecipientsCommand = new RelayCommand(OnUpdateRecipientsCommandExecuted, CanUpdateRecipientsCommandExecuted);
 
             _RecipientsData = RecipientsData;
         }
+
+        #endregion
+
+        #region SchedulerTasksData
+
+        private ISchedulerTasksData _SchedulerTasksData;
+        public ObservableCollection<SchedulerTask> SchedulerTasks { get; } = new ObservableCollection<SchedulerTask>();
+
+        #endregion
     }
 }
