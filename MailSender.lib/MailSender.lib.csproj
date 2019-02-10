@@ -68,7 +68,7 @@
     <Compile Include="Interfaces\ISchedulerTasksData.cs" />
     <Compile Include="Interfaces\ISendersData.cs" />
     <Compile Include="Interfaces\IServersData.cs" />
-    <Compile Include="MailService.cs" />
+    <Compile Include="Services\MailService.cs" />
     <Compile Include="MVVM\Command.cs" />
     <Compile Include="MVVM\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,8 +77,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler.cs" />
-    <Compile Include="Service\PasswordService.cs" />
+    <Compile Include="Services\Scheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
