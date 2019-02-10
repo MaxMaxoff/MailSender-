@@ -35,10 +35,10 @@ namespace MailSender.lib.Data.InMemory
 
         public void Delete(int id)
         {
-            var schedulerTask = GetById(id);
-            if (schedulerTask is null)
+            var item = GetById(id);
+            if (item is null)
                 return;
-            _SchedulerTasks.Remove(schedulerTask);
+            _SchedulerTasks.Remove(item);
         }
 
         public void SaveChanges()

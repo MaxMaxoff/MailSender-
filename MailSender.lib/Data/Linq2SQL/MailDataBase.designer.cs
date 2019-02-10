@@ -82,7 +82,7 @@ namespace MailSender.lib.Data.Linq2SQL
 			}
 		}
 		
-		public System.Data.Linq.Table<Server> Servers
+		public System.Data.Linq.Table<Server> Server
 		{
 			get
 			{
@@ -90,7 +90,7 @@ namespace MailSender.lib.Data.Linq2SQL
 			}
 		}
 		
-		public System.Data.Linq.Table<Sender> Senders
+		public System.Data.Linq.Table<Sender> Sender
 		{
 			get
 			{
@@ -98,7 +98,7 @@ namespace MailSender.lib.Data.Linq2SQL
 			}
 		}
 		
-		public System.Data.Linq.Table<SchedulerTask> SchedulerTasks
+		public System.Data.Linq.Table<SchedulerTask> SchedulerTask
 		{
 			get
 			{

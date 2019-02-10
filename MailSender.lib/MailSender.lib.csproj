@@ -56,9 +56,9 @@
     <Compile Include="Data\InMemory\InMemorySendersData.cs" />
     <Compile Include="Data\InMemory\InMemoryServersData.cs" />
     <Compile Include="Data\Linq2SQL\InLinq2SQLRecipientsData.cs" />
-    <Compile Include="Data\Linq2SQL\MailDataBase.cs">
-      <DependentUpon>MailDataBase.dbml</DependentUpon>
-    </Compile>
+    <Compile Include="Data\Linq2SQL\InLinq2SQLSchedulerTasksData.cs" />
+    <Compile Include="Data\Linq2SQL\InLinq2SQLSendersData.cs" />
+    <Compile Include="Data\Linq2SQL\InLinq2SQLServersData.cs" />
     <Compile Include="Data\Linq2SQL\MailDataBase.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

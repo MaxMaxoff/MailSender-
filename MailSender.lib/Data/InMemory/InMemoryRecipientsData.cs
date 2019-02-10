@@ -34,10 +34,10 @@ namespace MailSender.lib.Data.InMemory
 
         public void Delete(int id)
         {
-            var recipient = GetById(id);
-            if (recipient is null)
+            var item = GetById(id);
+            if (item is null)
                 return;
-            _Recipients.Remove(recipient);
+            _Recipients.Remove(item);
         }
 
         public void SaveChanges()
