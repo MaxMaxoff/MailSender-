@@ -27,8 +27,13 @@ namespace MailSender.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<MainWindowViewModel>();
+            
+            // InMemory for Debug
             SimpleIoc.Default.Register<IRecipientsData, InMemoryRecipientsData>();
+            
+            // InLinq2SQL for real data
             // SimpleIoc.Default.Register<IRecipientsData, InLinq2SQLRecipientsData>();
+            
             if (!SimpleIoc.Default.IsRegistered<MailDataBaseContext>())
                 SimpleIoc.Default.Register(() => new MailDataBaseContext());
         }

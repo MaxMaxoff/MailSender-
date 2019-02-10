@@ -19,6 +19,5 @@ namespace MailSender.lib.Data.DebugData
         public string Address { get; set; }
         public int Port { get; set; }
         public bool UseSSL { get; set; }
-
     }
 }

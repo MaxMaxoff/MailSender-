@@ -17,7 +17,7 @@
             <Setter Property="Height" Value="16"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect ShadowDepth="3" BlurRadius="5"/>
+                    <DropShadowEffect BlurRadius="10"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -111,7 +111,15 @@
                         </ToolBar>
                     </ToolBarTray>
                     <Grid>
-                        <views:RecipientsView/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <views:RecipientsView Grid.Column="0"/>
+                        <views:RecipientsEditor Grid.Column="1"/>
+                        <GridSplitter Grid.Column="0"
+                                      VerticalAlignment="Stretch" HorizontalAlignment="Right"
+                                      Width="3" Background="Transparent"/>
                     </Grid>
                 </DockPanel>
             </TabItem>
