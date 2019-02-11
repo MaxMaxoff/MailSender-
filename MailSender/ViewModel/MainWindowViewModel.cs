@@ -83,12 +83,5 @@ namespace MailSender.ViewModel
         }
 
         #endregion
-
-        #region SchedulerTasksData
-
-        private ISchedulerTasksData _SchedulerTasksData;
-        public ObservableCollection<SchedulerTask> SchedulerTasks { get; } = new ObservableCollection<SchedulerTask>();
-
-        #endregion
     }
 }

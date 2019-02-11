@@ -93,6 +93,7 @@
     <Compile Include="ViewModels\TestVeiwModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\SchedulerTasksViewModel.cs" />
     <Compile Include="ViewModel\SendersViewModel.cs" />
     <Compile Include="ViewModel\ServersViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -101,6 +102,9 @@
     </Compile>
     <Compile Include="Views\RecipientsView.xaml.cs">
       <DependentUpon>RecipientsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SchedulerTasksView.xaml.cs">
+      <DependentUpon>SchedulerTasksView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SendersComboBox.xaml.cs">
       <DependentUpon>SendersComboBox.xaml</DependentUpon>
@@ -135,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RecipientsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SchedulerTasksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

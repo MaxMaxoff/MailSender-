@@ -10,9 +10,9 @@ namespace MailSender.lib.Data.InMemory
     {
         private readonly List<SchedulerTask> _SchedulerTasks = new List<SchedulerTask>
         {
-            new SchedulerTask{Id = 1, Name = "", Time = DateTime.Now.AddHours(1), Mail = "Mail 1"},
-            new SchedulerTask{Id = 2, Name = "", Time = DateTime.Now.AddHours(2), Mail = "Mail 2"},
-            new SchedulerTask{Id = 3, Name = "", Time = DateTime.Now.AddHours(3), Mail = "Mail 3"},
+            new SchedulerTask{Id = 1, Name = "", Time = DateTime.Now.AddHours(1), Mail = "InMemory Message 1"},
+            new SchedulerTask{Id = 2, Name = "", Time = DateTime.Now.AddHours(2), Mail = "InMemory Message 2"},
+            new SchedulerTask{Id = 3, Name = "", Time = DateTime.Now.AddHours(3), Mail = "InMemory Message 3"},
         };
 
         public IEnumerable<SchedulerTask> GetAll()

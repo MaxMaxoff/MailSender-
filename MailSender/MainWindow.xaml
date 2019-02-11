@@ -52,19 +52,22 @@
                             <Style TargetType="{x:Type fa:ImageAwesome}">
                                 <Setter Property="Height" Value="16"/>
                             </Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            </Style>
                         </ToolBarTray.Resources>
                         <ToolBar Band="0">    
-                            <TextBlock Text="Сервера:" Margin="25,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Сервера:" Margin="25,0,0,0"/>
                             <views:ServersComboBox/>
                             <views:ToolBarButtons/>
                         </ToolBar>
                         <ToolBar Band="1">
-                            <TextBlock Text="Отправители:" VerticalAlignment="Center"/>
+                            <TextBlock Text="Отправители:"/>
                             <views:SendersComboBox/>
                             <views:ToolBarButtons/>
                         </ToolBar>
                         <ToolBar>
-                            <TextBlock Text="Перейти в планировщик:" VerticalAlignment="Center"/>
+                            <TextBlock Text="Перейти в планировщик:"/>
                             <Button ToolTip="Планировщик" Click="OpenSchedulerClick">
                                 <fa:ImageAwesome Icon="ClockOutline"/>
                             </Button>
@@ -108,28 +111,7 @@
                         </Button>
                     </StackPanel>
                     <GroupBox Grid.Column="1" Header="Задачи планировщика">
-                        <ListBox ItemsSource="{Binding SchedulerTasks}">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="{x:Type ListBoxItem}">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate DataType="{x:Type linq2Sql:SchedulerTask}">
-                                    <GroupBox>
-                                        <GroupBox.Header>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Name}"/>
-                                                <TextBlock><Run Text=":"/></TextBlock>
-                                                <TextBlock Text="{Binding Time, ConverterCulture=ru-ru, StringFormat=D}"/>
-                                                <TextBlock Text="{Binding Time, ConverterCulture=ru-ru, StringFormat=T}" Margin="5,0,0,0"/>
-                                            </StackPanel>
-                                        </GroupBox.Header>
-                                        <TextBlock Text="{Binding Mail}"/>
-                                    </GroupBox>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <views:SchedulerTasksView/>
                     </GroupBox>
                 </Grid>
             </TabItem>
