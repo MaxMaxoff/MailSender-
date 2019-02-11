@@ -102,6 +102,15 @@
     <Compile Include="Views\RecipientsView.xaml.cs">
       <DependentUpon>RecipientsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SendersComboBox.xaml.cs">
+      <DependentUpon>SendersComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServersComboBox.xaml.cs">
+      <DependentUpon>ServersComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolBarButtons.xaml.cs">
+      <DependentUpon>ToolBarButtons.xaml</DependentUpon>
+    </Compile>
     <Page Include="Controls\TabViewManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +135,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RecipientsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SendersComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ServersComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToolBarButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

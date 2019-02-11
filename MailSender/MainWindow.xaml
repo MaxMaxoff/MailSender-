@@ -3,21 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:local="clr-namespace:MailSender"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:linq2Sql="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:views="clr-namespace:MailSender.Views"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         x:Class="MailSender.MainWindow"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="450" Width="800">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding UpdateServersCommand}"/>
-            <i:InvokeCommandAction Command="{Binding UpdateSendersCommand}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
     <Window.Resources>
         <Style TargetType="{x:Type fa:ImageAwesome}">
             <Setter Property="Height" Value="16"/>
@@ -63,56 +55,17 @@
                         </ToolBarTray.Resources>
                         <ToolBar Band="0">    
                             <TextBlock Text="Сервера:" Margin="25,0,0,0" VerticalAlignment="Center"/>
-                            <ComboBox MinWidth="170" MaxWidth="200"
-                                      SelectedItem="0" ItemsSource="{Binding DataContext.Servers, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type linq2Sql:Server}">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}"/>
-                                            <TextBlock Text="{Binding Address}" Margin="5,0,0,0" Opacity="0.6"/>
-                                            <TextBlock>:</TextBlock>
-                                            <TextBlock Text="{Binding Port}" Opacity="0.6"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <Button ToolTip="Добавить">
-                                <fa:ImageAwesome Icon="Plus"/>
-                            </Button>
-                            <Button ToolTip="Редактирвоать">
-                                <fa:ImageAwesome Icon="Edit"/>
-                            </Button>
-                            <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Icon="Trash"/>
-                            </Button>
+                            <views:ServersComboBox/>
+                            <views:ToolBarButtons/>
                         </ToolBar>
                         <ToolBar Band="1">
                             <TextBlock Text="Отправители:" VerticalAlignment="Center"/>
-                            <ComboBox MinWidth="170" MaxWidth="200" SelectedItem="0"
-                                      ItemsSource="{Binding DataContext.Senders, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type linq2Sql:Sender}">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}"/>
-                                            <TextBlock Text="{Binding Address}" Margin="5,0,0,0" Opacity="0.6"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <Button ToolTip="Добавить">
-                                <fa:ImageAwesome Icon="Plus"/>
-                            </Button>
-                            <Button ToolTip="Редактирвоать">
-                                <fa:ImageAwesome Icon="Edit"/>
-                            </Button>
-                            <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Icon="Trash"/>
-                            </Button>
+                            <views:SendersComboBox/>
+                            <views:ToolBarButtons/>
                         </ToolBar>
                         <ToolBar>
                             <TextBlock Text="Перейти в планировщик:" VerticalAlignment="Center"/>
-                            <!--<Button ToolTip="Планировщик" Click="OpenSchedulerClick">-->
-                            <Button ToolTip="Планировщик">
+                            <Button ToolTip="Планировщик" Click="OpenSchedulerClick">
                                 <fa:ImageAwesome Icon="ClockOutline"/>
                             </Button>
                         </ToolBar>

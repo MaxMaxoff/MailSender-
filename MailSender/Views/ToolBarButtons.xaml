@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="MailSender.Views.ToolBarButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MailSender.Views"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             d:DesignHeight="50" d:DesignWidth="800">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type fa:ImageAwesome}">
+                <Setter Property="Height" Value="16"/>
+                <Setter Property="Margin" Value="4,0"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="10"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+        </StackPanel.Resources>
+        <Button ToolTip="Добавить">
+            <fa:ImageAwesome Icon="Plus"/>
+        </Button>
+        <Button ToolTip="Редактирвоать">
+            <fa:ImageAwesome Icon="Edit"/>
+        </Button>
+        <Button ToolTip="Удалить">
+            <fa:ImageAwesome Icon="Trash"/>
+        </Button>
+    </StackPanel>
+</UserControl>
