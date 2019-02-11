@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28531.58
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{D460C277-0214-40DA-81F6-7B7BA0C9C437}"
 EndProject
@@ -12,8 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestMailSender", "WpfTestMailSender\WpfTestMailSender.csproj", "{632A42A3-48D3-4228-8A46-0C4CBFF56D3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib", "MailSender.lib\MailSender.lib.csproj", "{CEDD5452-EC4C-4255-B941-6DB87ED85B98}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordServiceLib", "PasswordServiceLib\PasswordServiceLib.csproj", "{BA748715-648F-4779-B1E2-4D3ED5D3E381}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{CEDD5452-EC4C-4255-B941-6DB87ED85B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEDD5452-EC4C-4255-B941-6DB87ED85B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEDD5452-EC4C-4255-B941-6DB87ED85B98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA748715-648F-4779-B1E2-4D3ED5D3E381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA748715-648F-4779-B1E2-4D3ED5D3E381}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA748715-648F-4779-B1E2-4D3ED5D3E381}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA748715-648F-4779-B1E2-4D3ED5D3E381}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
