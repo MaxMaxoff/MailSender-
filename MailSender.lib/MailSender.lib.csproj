@@ -78,6 +78,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\PasswordService.cs" />
     <Compile Include="Services\Scheduler.cs" />
   </ItemGroup>
   <ItemGroup>

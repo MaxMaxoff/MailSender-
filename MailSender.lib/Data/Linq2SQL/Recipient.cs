@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MailSender.lib.Data.Linq2SQL
 {
+    /// <summary>
+    /// Recipients for validation
+    /// </summary>
     public partial class Recipient : IDataErrorInfo
     {
         string IDataErrorInfo.Error => string.Empty;
