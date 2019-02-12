@@ -48,7 +48,6 @@ namespace MailSender.ViewModel
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
-
         public MainWindowViewModel MainWindowModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
         public ServersViewModel ServersModel => ServiceLocator.Current.GetInstance<ServersViewModel>();
         public SendersViewModel SendersModel => ServiceLocator.Current.GetInstance<SendersViewModel>();

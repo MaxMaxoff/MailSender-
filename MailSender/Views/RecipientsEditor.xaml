@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MailSender.Views"
+             xmlns:vr="clr-namespace:MailSender.Infrastructure.ValidationRules"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="4" DataContext="{Binding CurrentRecipient}">
+    <Grid Margin="4" DataContext="{Binding CurrentRecipient, NotifyOnValidationError=True}"
+          Validation.Error="Validation_OnError">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -23,9 +24,49 @@
         <TextBlock Grid.Column="0" Grid.Row="1">ID:</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="2">Name:</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="3">Address:</TextBlock>
-        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Id}" IsReadOnly="True"></TextBox>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Name}"></TextBox>
-        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Address}"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Id, NotifyOnValidationError=True}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Foreground="Red" Height="12" Icon="ExclamationCircle"/>
+                        <Border BorderBrush="Red" Padding="3" CornerRadius="3" BorderThickness="2">
+                            <AdornedElementPlaceholder/>
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Name, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Foreground="Red" Height="12" Icon="ExclamationCircle"/>
+                        <Border BorderBrush="Red" Padding="3" CornerRadius="3" BorderThickness="2">
+                            <AdornedElementPlaceholder/>
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+        <TextBox Grid.Column="1" Grid.Row="3">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <fa:ImageAwesome Foreground="Red" Height="12" Icon="ExclamationCircle"/>
+                        <Border BorderBrush="Red" Padding="3" CornerRadius="3" BorderThickness="2">
+                            <AdornedElementPlaceholder/>
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+            <TextBox.Text>
+                <Binding Path="Address" NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <vr:RegexpValidationRule RegExpr="/.+@.+\..+/i" ErrorMessage="Ошибка формата email адреса"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4"
                 HorizontalAlignment="Center" VerticalAlignment="Top"
                 Margin="0,10" Padding="20,5"
