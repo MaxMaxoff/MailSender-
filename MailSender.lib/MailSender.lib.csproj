@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PasswordServiceLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PasswordServiceLib\PasswordServiceLib\bin\Release\PasswordServiceLib.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,6 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MailDataBase.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Linq2SQL\Recipient.cs" />
     <Compile Include="Interfaces\IRecipientsData.cs" />
     <Compile Include="Interfaces\ISchedulerTasksData.cs" />
     <Compile Include="Interfaces\ISendersData.cs" />
@@ -77,6 +74,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\PasswordService.cs" />
     <Compile Include="Services\Scheduler.cs" />
   </ItemGroup>
   <ItemGroup>

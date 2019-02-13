@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using PasswordServiceLib;
+using MailSender.lib.Services;
 
 namespace MailSender.lib.Data.DebugData
 {
@@ -7,9 +7,9 @@ namespace MailSender.lib.Data.DebugData
     {
         public static List<Sender> Items { get; } = new List<Sender>
         {
-            new Sender{Id = 1, Name = "Иванов", Address = "ivanov@yandex.ru", Password = PasswordEncoder.Encrypt("Password1")},
-            new Sender{Id = 2, Name = "Петров", Address = "petrov@yandex.ru", Password = PasswordEncoder.Encrypt("Password2")},
-            new Sender{Id = 3, Name = "Сидоров", Address = "sidorov@yandex.ru", Password = PasswordEncoder.Encrypt("Password3")},
+            new Sender{Id = 1, Name = "Иванов", Address = "ivanov@yandex.ru", Password = PasswordService.Encrypt("Password1")},
+            new Sender{Id = 2, Name = "Петров", Address = "petrov@yandex.ru", Password = PasswordService.Encrypt("Password2")},
+            new Sender{Id = 3, Name = "Сидоров", Address = "sidorov@yandex.ru", Password = PasswordService.Encrypt("Password3")},
         };
     }
 
