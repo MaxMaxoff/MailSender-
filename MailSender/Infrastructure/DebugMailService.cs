@@ -1,37 +1,44 @@
 ﻿using System.Collections.Generic;
-using System.Net;
-using System.Net.Mail;
 using System.Security;
-using System.Threading;
 using MailSender.lib.Interfaces;
+using System.Diagnostics;
+using System.Threading;
 
-namespace MailSender.lib
+namespace MailSender.Infrastructure
 {
-    public class MailService : IMailService
+    internal class DebugMailService : IMailService
     {
         public IMailSender GetSender(string Address, int Port, bool UseSSL, string Login, SecureString Password)
         {
-            return new MailSender(Address, Port, UseSSL, Login, Password);
+            return new DebugMailSender(Address, Port, UseSSL, Login, Password);
         }
     }
 
-    internal class MailSender : IMailSender
+    internal class DebugMailSender : IMailSender
     {
-        private readonly SmtpClient _Client;
+        private string _Address;
+        private int _Port;
+        private bool _UseSSL;
+        private string _Login;
+        private SecureString _Password;
 
-        public MailSender(string Address, int Port, bool UseSSL, string Login, SecureString Password)
+        public DebugMailSender(string Address, int Port, bool UseSSL, string Login, SecureString Password)
         {
-            _Client = new SmtpClient(Address, Port)
-            {
-                Credentials = new NetworkCredential(Login, Password),
-                EnableSsl = UseSSL
-            };
+            _Address = Address;
+            _Port = Port;
+            _UseSSL = UseSSL;
+            _Login = Login;
+            _Password = Password;
         }
 
         public void Send(string SenderAddress, string RecipientAddress, string Subject, string Body)
         {
-            using (var msg = new MailMessage(SenderAddress, RecipientAddress, Subject, Body))
-            _Client.Send(msg);
+            Trace.TraceInformation($"Отправка сообщения через сервер {_Address}:{_Port}  (ssl:{_UseSSL})\r\n" +
+                            $"  Login:{_Login}\r\n" +
+                            $"  Отправитель:{SenderAddress}\r\n" +
+                            $"  Получатель:{RecipientAddress}\r\n" +
+                            $"  Тема:{Subject}\r\n" +
+                            $"  Сообщение:{Body}\r\n");
         }
 
         public void SendAsync(string SenderAddress, string RecipientAddress, string Subject, string Body)
@@ -56,7 +63,7 @@ namespace MailSender.lib
 
         public void Dispose()
         {
-            _Client.Dispose();
+            
         }
     }
 }

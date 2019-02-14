@@ -1,5 +1,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
+using MailSender.Infrastructure; //SimpleIoc.Default.Register<IMailService, DebugMailService>();
+using MailSender.lib; //SimpleIoc.Default.Register<IMailService, MailService>();
 using MailSender.lib.Data.InMemory;
 using MailSender.lib.Data.Linq2SQL;
 using MailSender.lib.Interfaces;
@@ -19,7 +21,10 @@ namespace MailSender.ViewModel
             SimpleIoc.Default.Register<ServersViewModel>();
             SimpleIoc.Default.Register<SendersViewModel>();
             SimpleIoc.Default.Register<SchedulerTasksViewModel>();
-            
+
+            SimpleIoc.Default.Register<IMailService, DebugMailService>();
+            //SimpleIoc.Default.Register<IMailService, MailService>();
+
             // InMemory for Debug
             SimpleIoc.Default.Register<IRecipientsData, InMemoryRecipientsData>();
             SimpleIoc.Default.Register<IServersData, InMemoryServersData>();
