@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace C3_HomeWork5_Task2
 {
-    class Program
+    static class Program
     {
         /// <summary>
         /// Array of delimiters
@@ -21,11 +19,11 @@ namespace C3_HomeWork5_Task2
         private static string _fileName = @"D:\Projects\C#\students_4.csv";
         private static string _fileNameOut = @"D:\Projects\C#\students_4.txt";
 
-        private static Queue<string[]> database = new Queue<string[]>();
+        private static readonly Queue<string[]> database = new Queue<string[]>();
         
         private static readonly object __SyncRoot = new object();
 
-        static void ReadFromFile()
+        private static void ReadFromFile()
         {
             using (StreamReader sr = new StreamReader(_fileName))
             {
@@ -37,7 +35,7 @@ namespace C3_HomeWork5_Task2
                         {
                             lock (__SyncRoot)
                             {
-                                string[] student = sr.ReadLine().Split(delimiters);
+                                var student = sr.ReadLine().Split(delimiters);
                                 for (int i = 0; i < student.Count(); i++)
                                     student[i] = $"{i}: " + student[i];
                                 database.Enqueue(student);
@@ -68,7 +66,7 @@ namespace C3_HomeWork5_Task2
             }
         }
 
-        static void WriteToFile()
+        private static void WriteToFile()
         {
             bool newData = true;
             using (StreamWriter sw = new StreamWriter(_fileNameOut))
@@ -83,9 +81,9 @@ namespace C3_HomeWork5_Task2
                             {
                                 lock (__SyncRoot)
                                 {
-                                    string[] student = database.Dequeue();
-                                    for (int i = 0; i < student.Length; i++)
-                                        sw.WriteLine(student[i]);
+                                    var student = database.Dequeue();
+                                    foreach (var str in student)
+                                        sw.WriteLine(str);
                                 }
                             }
                             catch (ArgumentNullException exc)
@@ -118,8 +116,7 @@ namespace C3_HomeWork5_Task2
                 }
             }
         }
-
-
+        
         static void Main(string[] args)
         {
             database.Clear();
@@ -145,17 +142,6 @@ namespace C3_HomeWork5_Task2
             
             Console.WriteLine("Write Complete!");
             Console.ReadKey();
-        }
-
-        int TotalLines(string filePath)
-        {
-            using (StreamReader r = new StreamReader(filePath))
-            {
-                int i = 0;
-                while (r.ReadLine() != null) { i++; }
-                if (r != null) r.Close();
-                return i;
-            }
         }
     }
 }
