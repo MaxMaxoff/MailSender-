@@ -25,7 +25,8 @@ namespace C3_HomeWork5_Task1
             _fac = 1;
             
             for (ulong i = 2; i < n; _fac *= (ulong) i++)
-                Console.WriteLine($"Считаю факториал, текущее значение:{_fac}");
+                // uncomment if you need to see output
+                /*Console.WriteLine($"Считаю факториал, текущее значение:{_fac}")*/;
         }
 
 
@@ -34,7 +35,8 @@ namespace C3_HomeWork5_Task1
             _sum = 0;
 
             for (int i = 1; i <= n; _sum += i++)
-                Console.WriteLine($"Считаю сумму, текущее значение:{_sum}");
+                // uncomment if you need to see output
+                /*Console.WriteLine($"Считаю сумму, текущее значение:{_sum}")*/;
         }
 
         static void Main(string[] args)
