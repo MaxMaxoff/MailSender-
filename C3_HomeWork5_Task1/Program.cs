@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 // </summary>
 namespace C3_HomeWork5_Task1
 {
-    class Program
+    static class Program
     {
 
         private static ulong _fac;
