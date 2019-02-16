@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D460C277-0214-40DA-81F6-7B7BA0C9C437}</ProjectGuid>
+    <ProjectGuid>{CCCC7724-6817-4E4C-819E-44160EE15098}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TestConsole</RootNamespace>
-    <AssemblyName>TestConsole</AssemblyName>
+    <RootNamespace>C3_HomeWork5_Task1</RootNamespace>
+    <AssemblyName>C3_HomeWork5_Task1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThreadTests.cs" />
+    <Compile Include="SupportMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
