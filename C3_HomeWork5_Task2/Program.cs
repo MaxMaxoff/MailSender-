@@ -18,8 +18,8 @@ namespace C3_HomeWork5_Task2
         /// <summary>
         /// File Name, change it by yourself
         /// </summary>
-        private static string _fileName = @"D:\Projects\C#\students_1.csv";
-        private static string _fileNameOut = @"D:\Projects\C#\students_1.txt";
+        private static string _fileName = @"D:\Projects\C#\students_4.csv";
+        private static string _fileNameOut = @"D:\Projects\C#\students_4.txt";
 
         private static Queue<string[]> database = new Queue<string[]>();
         
@@ -68,34 +68,41 @@ namespace C3_HomeWork5_Task2
 
         static void WriteToFile()
         {
+            bool newData = true;
             using (StreamWriter sw = new StreamWriter(_fileNameOut))
             {
                 try
                 {
-                    while (database.Count > 0)
+                    while (newData)
                     {
-                        try
+                        while (database.Count > 0)
                         {
-                            lock (__SyncRoot)
+                            try
                             {
-                                string[] student = database.Dequeue();
-                                for (int i = 0; i < student.Length; i++)
-                                    sw.WriteLine(student[i]);
+                                lock (__SyncRoot)
+                                {
+                                    string[] student = database.Dequeue();
+                                    for (int i = 0; i < student.Length; i++)
+                                        sw.WriteLine(student[i]);
+                                }
                             }
-                            
+                            catch (ArgumentNullException exc)
+                            {
+                                Console.WriteLine(exc.Message);
+                            }
+                            catch (ArgumentException exc)
+                            {
+                                Console.WriteLine(exc.Message);
+                            }
+                            catch (Exception exc)
+                            {
+                                Console.WriteLine(exc.Message);
+                            }
                         }
-                        catch (ArgumentNullException exc)
-                        {
-                            Console.WriteLine(exc.Message);
-                        }
-                        catch (ArgumentException exc)
-                        {
-                            Console.WriteLine(exc.Message);
-                        }
-                        catch (Exception exc)
-                        {
-                            Console.WriteLine(exc.Message);
-                        }
+
+                        newData = false;
+                        Thread.Sleep(2000);
+                        if (database.Count > 0) newData = true;
                     }
                 }
                 catch (Exception e)
@@ -106,7 +113,7 @@ namespace C3_HomeWork5_Task2
                 finally
                 {
                     if (sw != null) sw.Close();
-                } 
+                }
             }
         }
 
