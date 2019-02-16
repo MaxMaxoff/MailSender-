@@ -38,6 +38,8 @@ namespace C3_HomeWork5_Task2
                             lock (__SyncRoot)
                             {
                                 string[] student = sr.ReadLine().Split(delimiters);
+                                for (int i = 0; i < student.Count(); i++)
+                                    student[i] = $"{i}: " + student[i];
                                 database.Enqueue(student);
                             }
                         }
