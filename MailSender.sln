@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib", "MailSende
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib.Tests", "MailSender.lib.Tests\MailSender.lib.Tests.csproj", "{B1AAF1F3-312C-48B4-AFFA-45A297AE2C49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C3_HomeWork5_Task1", "C3_HomeWork5_Task1\C3_HomeWork5_Task1.csproj", "{CCCC7724-6817-4E4C-819E-44160EE15098}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{B1AAF1F3-312C-48B4-AFFA-45A297AE2C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1AAF1F3-312C-48B4-AFFA-45A297AE2C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1AAF1F3-312C-48B4-AFFA-45A297AE2C49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCC7724-6817-4E4C-819E-44160EE15098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCC7724-6817-4E4C-819E-44160EE15098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCC7724-6817-4E4C-819E-44160EE15098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCC7724-6817-4E4C-819E-44160EE15098}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D460C277-0214-40DA-81F6-7B7BA0C9C437} = {198772F2-97A0-4752-B9F2-A1280D5D30C3}
 		{632A42A3-48D3-4228-8A46-0C4CBFF56D3A} = {198772F2-97A0-4752-B9F2-A1280D5D30C3}
+		{CCCC7724-6817-4E4C-819E-44160EE15098} = {198772F2-97A0-4752-B9F2-A1280D5D30C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F9AACE4-8A09-490B-892E-03E16CFD9A9D}
