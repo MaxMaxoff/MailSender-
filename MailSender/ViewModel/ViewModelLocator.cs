@@ -26,17 +26,19 @@ namespace MailSender.ViewModel
             //SimpleIoc.Default.Register<IMailService, MailService>();
 
             // InMemory for Debug
-            SimpleIoc.Default.Register<IRecipientsData, InMemoryRecipientsData>();
-            SimpleIoc.Default.Register<IServersData, InMemoryServersData>();
-            SimpleIoc.Default.Register<ISendersData, InMemorySendersData>();
-            SimpleIoc.Default.Register<ISchedulerTasksData, InMemorySchedulerTasksData>();
-            
+            SimpleIoc.Default.Register<IData<Recipient>, InMemoryRecipientsData>();
+            SimpleIoc.Default.Register<IData<Server>, InMemoryServersData>();
+            SimpleIoc.Default.Register<IData<Sender>, InMemorySendersData>();
+            SimpleIoc.Default.Register<IData<SchedulerTask>, InMemorySchedulerTasksData>();
+            SimpleIoc.Default.Register<IData<Mail>, InMemoryMailsData>();
+
             // InLinq2SQL for real data
-            //SimpleIoc.Default.Register<IRecipientsData, InLinq2SQLRecipientsData>();
-            //SimpleIoc.Default.Register<IServersData, InLinq2SQLServersData>();
-            //SimpleIoc.Default.Register<ISendersData, InLinq2SQLSendersData>();
-            //SimpleIoc.Default.Register<ISchedulerTasksData, InLinq2SQLSchedulerTasksData>();
-            
+            //SimpleIoc.Default.Register<IData<Recipient>, InLinq2SQLRecipientsData>();
+            //SimpleIoc.Default.Register<IData<Server>, InLinq2SQLServersData>();
+            //SimpleIoc.Default.Register<IData<Sender>, InLinq2SQLSendersData>();
+            //SimpleIoc.Default.Register<IData<SchedulerTask>, InLinq2SQLSchedulerTasksData>();
+            //SimpleIoc.Default.Register<IData<Mail>, InLinq2SQLMailsData>();
+
             if (!SimpleIoc.Default.IsRegistered<MailDataBaseContext>())
                 SimpleIoc.Default.Register(() => new MailDataBaseContext());
         }

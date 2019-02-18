@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MailSender.lib.Interfaces;
 
 namespace MailSender.lib.Data.Linq2SQL
 {
-    public class InLinq2SQLSchedulerTasksData : ISchedulerTasksData
+    public class InLinq2SQLSchedulerTasksData : IData<SchedulerTask>
     {
         private MailDataBaseContext _db;
 
@@ -18,8 +15,8 @@ namespace MailSender.lib.Data.Linq2SQL
 
         public void AddNew(SchedulerTask newSchedulerTask)
         {
-            newSchedulerTask.Id = _db.SchedulerTask.Max(r => r.Id) + 1;
-            _db.SchedulerTask.InsertOnSubmit(newSchedulerTask);
+            newSchedulerTask.Id = _db.SchedulerTasks.Max(r => r.Id) + 1;
+            _db.SchedulerTasks.InsertOnSubmit(newSchedulerTask);
 
         }
 
@@ -27,17 +24,17 @@ namespace MailSender.lib.Data.Linq2SQL
         {
             var item = GetById(id);
             if (item is null) return;
-            _db.SchedulerTask.DeleteOnSubmit(item);
+            _db.SchedulerTasks.DeleteOnSubmit(item);
         }
 
         public IEnumerable<SchedulerTask> GetAll()
         {
-            return _db.SchedulerTask.AsEnumerable();
+            return _db.SchedulerTasks.AsEnumerable();
         }
 
         public SchedulerTask GetById(int id)
         {
-            return _db.SchedulerTask.FirstOrDefault(s => s.Id == id);
+            return _db.SchedulerTasks.FirstOrDefault(s => s.Id == id);
         }
 
         public void SaveChanges()

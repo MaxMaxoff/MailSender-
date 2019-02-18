@@ -40,7 +40,7 @@ namespace MailSender.ViewModel
 
         #region RecipientsData
 
-        private readonly IRecipientsData _RecipientsData;
+        private readonly IData<Recipient> _RecipientsData;
         private readonly IMailService _MailService;
 
         public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
@@ -78,7 +78,7 @@ namespace MailSender.ViewModel
         /// </summary>
         /// <param name="RecipientsData"></param>
         /// <param name="MailService"></param>
-        public MainWindowViewModel(IRecipientsData RecipientsData, IMailService MailService)
+        public MainWindowViewModel(IData<Recipient> RecipientsData, IMailService MailService)
         {
             UpdateRecipientsCommand = new RelayCommand(OnUpdateRecipientsCommandExecuted, CanUpdateRecipientsCommandExecuted);
 

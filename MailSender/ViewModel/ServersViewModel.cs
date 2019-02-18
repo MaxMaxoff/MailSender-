@@ -11,7 +11,7 @@ namespace MailSender.ViewModel
     {
         #region ServersData
 
-        private IServersData _ServersData;
+        private IData<Server> _ServersData;
         //public ObservableCollection<Server> Servers { get; } = new ObservableCollection<Server>();
 
         private ObservableCollection<Server> _Servers;
@@ -51,7 +51,7 @@ namespace MailSender.ViewModel
         /// Servers View Model
         /// </summary>
         /// <param name="ServersData"></param>
-        public ServersViewModel(IServersData ServersData)
+        public ServersViewModel(IData<Server> ServersData)
         {
             UpdateServersCommand = new RelayCommand(OnUpdateServersCommandExecuted, CanUpdateServersCommandExecuted);
 

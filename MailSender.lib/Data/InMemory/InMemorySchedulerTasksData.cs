@@ -6,7 +6,7 @@ using MailSender.lib.Interfaces;
 
 namespace MailSender.lib.Data.InMemory
 {
-    public class InMemorySchedulerTasksData : ISchedulerTasksData
+    public class InMemorySchedulerTasksData : IData<SchedulerTask>
     {
         private readonly List<SchedulerTask> _SchedulerTasks = new List<SchedulerTask>
         {

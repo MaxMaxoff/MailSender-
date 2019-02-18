@@ -6,7 +6,7 @@ using MailSender.lib.Services;
 
 namespace MailSender.lib.Data.InMemory
 {
-    public class InMemorySendersData : ISendersData
+    public class InMemorySendersData : IData<Sender>
     {
         private readonly List<Sender> _Senders = new List<Sender>
         {

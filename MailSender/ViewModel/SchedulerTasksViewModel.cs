@@ -11,7 +11,7 @@ namespace MailSender.ViewModel
     {
         #region SchedulerTasksData
 
-        private ISchedulerTasksData _SchedulerTasksData;
+        private IData<SchedulerTask> _SchedulerTasksData;
         //public ObservableCollection<SchedulerTask> SchedulerTasks { get; } = new ObservableCollection<SchedulerTask>();
         
         private ObservableCollection<SchedulerTask> _SchedulerTasks;
@@ -51,7 +51,7 @@ namespace MailSender.ViewModel
         /// SchedulerTasks View Model
         /// </summary>
         /// <param name="SchedulerTasksData"></param>
-        public SchedulerTasksViewModel(ISchedulerTasksData SchedulerTasksData)
+        public SchedulerTasksViewModel(IData<SchedulerTask> SchedulerTasksData)
         {
             UpdateSchedulerTasksCommand = new RelayCommand(OnUpdateSchedulerTasksCommandExecuted, CanUpdateSchedulerTasksCommandExecuted);
 
