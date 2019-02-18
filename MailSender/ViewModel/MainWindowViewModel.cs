@@ -42,8 +42,11 @@ namespace MailSender.ViewModel
 
         private readonly IData<Recipient> _RecipientsData;
         private readonly IMailService _MailService;
+        private readonly IData<Mail> _MailsData;
 
         public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
+
+        public ObservableCollection<Mail> Mails { get; } = new ObservableCollection<Mail>();
 
         /// <summary>
         /// Command for update Recipient window area
@@ -72,18 +75,35 @@ namespace MailSender.ViewModel
             get => _CurrentRecipient;
             set => Set(ref _CurrentRecipient, value);
         }
+
+        private Mail _SelectedMail;
+
+        public Mail SelectedMail
+        {
+            get => _SelectedMail;
+            set => Set(ref _SelectedMail, value);
+        }
         
         /// <summary>
         /// Main Window View Model
         /// </summary>
         /// <param name="RecipientsData"></param>
         /// <param name="MailService"></param>
-        public MainWindowViewModel(IData<Recipient> RecipientsData, IMailService MailService)
+        public MainWindowViewModel(
+            IData<Recipient> RecipientsData, 
+            IMailService MailService,
+            IData<Mail> MailsData)
         {
             UpdateRecipientsCommand = new RelayCommand(OnUpdateRecipientsCommandExecuted, CanUpdateRecipientsCommandExecuted);
 
             _RecipientsData = RecipientsData;
             _MailService = MailService;
+            _MailsData = MailsData;
+
+            foreach (var mail in _MailsData.GetAll())
+            {
+                Mails.Add(mail);
+            }
         }
 
         #endregion
