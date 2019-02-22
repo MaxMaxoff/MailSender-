@@ -34,7 +34,8 @@ namespace MailSender
 
         private void SendNowClick(object sender, RoutedEventArgs e)
         {
-            if (IsRichTextBoxEmpty(MessageTextRTB))
+            //if (IsRichTextBoxEmpty(MessageTextRTB))
+            if (string.IsNullOrEmpty(MessageTextRTB.Text))
             {
                 MainTabControl.SelectedItem = EditorTab;
                 MessageBox.Show("Письмо не заполнено!", "Ошибка!",
@@ -45,10 +46,10 @@ namespace MailSender
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        public bool IsRichTextBoxEmpty(RichTextBox rtb)
-        {
-            string text = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text;
-            return String.IsNullOrWhiteSpace(text);
-        }
+        //public bool IsRichTextBoxEmpty(RichTextBox rtb)
+        //{
+        //    string text = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text;
+        //    return String.IsNullOrWhiteSpace(text);
+        //}
     }
 }

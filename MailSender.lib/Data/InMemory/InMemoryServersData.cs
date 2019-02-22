@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MailSender.lib.Data.Linq2SQL;
 using MailSender.lib.Interfaces;
 
 namespace MailSender.lib.Data.InMemory
 {
-    public class InMemoryServersData : IServersData
+    public class InMemoryServersData : IData<Server>
     {
         private readonly List<Server> _Servers = new List<Server>
         {

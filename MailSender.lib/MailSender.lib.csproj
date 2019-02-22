@@ -47,10 +47,12 @@
     <Compile Include="Data\DebugData\SchedulerTasks.cs" />
     <Compile Include="Data\DebugData\Senders.cs" />
     <Compile Include="Data\DebugData\Servers.cs" />
+    <Compile Include="Data\InMemory\InMemoryMailsData.cs" />
     <Compile Include="Data\InMemory\InMemoryRecipientsData.cs" />
     <Compile Include="Data\InMemory\InMemorySchedulerTasksData.cs" />
     <Compile Include="Data\InMemory\InMemorySendersData.cs" />
     <Compile Include="Data\InMemory\InMemoryServersData.cs" />
+    <Compile Include="Data\Linq2SQL\InLinq2SQLMailsData.cs" />
     <Compile Include="Data\Linq2SQL\InLinq2SQLRecipientsData.cs" />
     <Compile Include="Data\Linq2SQL\InLinq2SQLSchedulerTasksData.cs" />
     <Compile Include="Data\Linq2SQL\InLinq2SQLSendersData.cs" />
@@ -61,11 +63,9 @@
       <DependentUpon>MailDataBase.dbml</DependentUpon>
     </Compile>
     <Compile Include="Data\Linq2SQL\Recipient.cs" />
+    <Compile Include="Interfaces\IData.cs" />
     <Compile Include="Interfaces\IMailService.cs" />
-    <Compile Include="Interfaces\IRecipientsData.cs" />
-    <Compile Include="Interfaces\ISchedulerTasksData.cs" />
-    <Compile Include="Interfaces\ISendersData.cs" />
-    <Compile Include="Interfaces\IServersData.cs" />
+    <Compile Include="Interfaces\IMainViewModel.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="MVVM\Command.cs" />
     <Compile Include="MVVM\ViewModel.cs" />

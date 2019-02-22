@@ -5,7 +5,7 @@ using MailSender.lib.Interfaces;
 
 namespace MailSender.lib.Data.InMemory
 {
-    public class InMemoryRecipientsData : IRecipientsData
+    public class InMemoryRecipientsData : IData<Recipient>
     {
         private readonly List<Recipient> _Recipients = new List<Recipient>
         {

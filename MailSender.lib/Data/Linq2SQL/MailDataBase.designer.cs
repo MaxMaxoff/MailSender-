@@ -22,7 +22,7 @@ namespace MailSender.lib.Data.Linq2SQL
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="MailSenderDB")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="D:\\PROJECTS\\C#\\MAILSENDER-\\DB\\MAILSENDERDB.MDF")]
 	public partial class MailDataBaseContext : System.Data.Linq.DataContext
 	{
 		
@@ -42,10 +42,13 @@ namespace MailSender.lib.Data.Linq2SQL
     partial void InsertSchedulerTask(SchedulerTask instance);
     partial void UpdateSchedulerTask(SchedulerTask instance);
     partial void DeleteSchedulerTask(SchedulerTask instance);
+    partial void InsertMail(Mail instance);
+    partial void UpdateMail(Mail instance);
+    partial void DeleteMail(Mail instance);
     #endregion
 		
 		public MailDataBaseContext() : 
-				base(global::MailSender.lib.Properties.Settings.Default.MailSenderDBConnectionString, mappingSource)
+				base(global::MailSender.lib.Properties.Settings.Default.D__PROJECTS_C__MAILSENDER__DB_MAILSENDERDB_MDFConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -74,7 +77,7 @@ namespace MailSender.lib.Data.Linq2SQL
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Recipient> Recipient
+		public System.Data.Linq.Table<Recipient> Recipients
 		{
 			get
 			{
@@ -82,7 +85,7 @@ namespace MailSender.lib.Data.Linq2SQL
 			}
 		}
 		
-		public System.Data.Linq.Table<Server> Server
+		public System.Data.Linq.Table<Server> Servers
 		{
 			get
 			{
@@ -90,7 +93,7 @@ namespace MailSender.lib.Data.Linq2SQL
 			}
 		}
 		
-		public System.Data.Linq.Table<Sender> Sender
+		public System.Data.Linq.Table<Sender> Senders
 		{
 			get
 			{
@@ -98,11 +101,19 @@ namespace MailSender.lib.Data.Linq2SQL
 			}
 		}
 		
-		public System.Data.Linq.Table<SchedulerTask> SchedulerTask
+		public System.Data.Linq.Table<SchedulerTask> SchedulerTasks
 		{
 			get
 			{
 				return this.GetTable<SchedulerTask>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Mail> Mails
+		{
+			get
+			{
+				return this.GetTable<Mail>();
 			}
 		}
 	}
@@ -618,6 +629,116 @@ namespace MailSender.lib.Data.Linq2SQL
 					this._Mail = value;
 					this.SendPropertyChanged("Mail");
 					this.OnMailChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Mails")]
+	public partial class Mail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Subject;
+		
+		private string _Body;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnSubjectChanging(string value);
+    partial void OnSubjectChanged();
+    partial void OnBodyChanging(string value);
+    partial void OnBodyChanged();
+    #endregion
+		
+		public Mail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string Subject
+		{
+			get
+			{
+				return this._Subject;
+			}
+			set
+			{
+				if ((this._Subject != value))
+				{
+					this.OnSubjectChanging(value);
+					this.SendPropertyChanging();
+					this._Subject = value;
+					this.SendPropertyChanged("Subject");
+					this.OnSubjectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Body", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Body
+		{
+			get
+			{
+				return this._Body;
+			}
+			set
+			{
+				if ((this._Body != value))
+				{
+					this.OnBodyChanging(value);
+					this.SendPropertyChanging();
+					this._Body = value;
+					this.SendPropertyChanged("Body");
+					this.OnBodyChanged();
 				}
 			}
 		}
