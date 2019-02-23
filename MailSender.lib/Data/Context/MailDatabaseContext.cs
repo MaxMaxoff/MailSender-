@@ -1,13 +1,36 @@
 ﻿using System.Data.Entity;
+using MailSender.lib.Migrations;
 
 namespace MailSender.lib.Data.Context
 {
     public class MailDatabaseContext : DbContext
     {
+        static MailDatabaseContext()
+        {
+            #region drop db
+
+            // create if not exist
+            //Database.SetInitializer(new CreateDatabaseIfNotExists<MailDatabaseContext>());
+
+            // drop and create again always
+            //Database.SetInitializer(new DropCreateDatabaseAlways<MailDatabaseContext>());
+
+            // drop and create again if model db changed
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<MailDatabaseContext>());
+
+            #endregion
+
+            #region update db without drop
+
+            // update db to latest version
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MailDatabaseContext, Configuration>());
+
+            #endregion
+        }
 
         public MailDatabaseContext() : base("name=MailDatabaseContext") { }
 
-        public MailDatabaseContext(string ConnectionStr) : base(ConnectionStr) { }
+        //public MailDatabaseContext(string ConnectionStr) : base(ConnectionStr) { }
 
         public DbSet<Mail> Mails { get; set; }
 

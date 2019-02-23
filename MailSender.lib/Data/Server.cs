@@ -21,6 +21,6 @@ namespace MailSender.lib.Data
         public int Port { get; set; }
         public bool UseSSL { get; set; }
         public string UserName { get; set; }
-        public SecureString Password { get; set; }
+        public string Password { get; set; }
     }
 }

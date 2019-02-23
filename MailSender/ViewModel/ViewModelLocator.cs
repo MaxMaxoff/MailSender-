@@ -2,6 +2,8 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 using MailSender.Infrastructure;
 using MailSender.lib.Data;
+using MailSender.lib.Data.Context;
+using MailSender.lib.Data.EF;
 using MailSender.lib.Interfaces;
 
 namespace MailSender.ViewModel
@@ -23,15 +25,14 @@ namespace MailSender.ViewModel
             SimpleIoc.Default.Register<IMailService, DebugMailService>();
             //SimpleIoc.Default.Register<IMailService, MailService>();
 
-            // InMemory for Debug
-            SimpleIoc.Default.Register<Recipients>();
-            SimpleIoc.Default.Register<Servers>();
-            SimpleIoc.Default.Register<Senders>();
-            SimpleIoc.Default.Register<SchedulerTasks>();
-            SimpleIoc.Default.Register<Mails>();
+            SimpleIoc.Default.Register<IData<Recipient>, EFRecipientsData>();
+            SimpleIoc.Default.Register<IData<Server>, EFServersData>();
+            SimpleIoc.Default.Register<IData<Sender>, EFSendersData>();
+            SimpleIoc.Default.Register<IData<SchedulerTask>, EFSchedulerTasksData>();
+            SimpleIoc.Default.Register<IData<Mail>, EFMailsData>();
 
-            //if (!SimpleIoc.Default.IsRegistered<MailDataBaseContext>())
-            //    SimpleIoc.Default.Register(() => new MailDataBaseContext());
+            if (!SimpleIoc.Default.IsRegistered<MailDatabaseContext>())
+                SimpleIoc.Default.Register(() => new MailDatabaseContext());
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();

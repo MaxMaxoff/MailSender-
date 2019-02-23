@@ -51,7 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Context\MailDatabaseContext.cs" />
-    <Compile Include="Data\DataBase.cs" />
+    <Compile Include="Data\EF\EFMailsData.cs" />
+    <Compile Include="Data\EF\EFRecipientsData.cs" />
+    <Compile Include="Data\EF\EFSchedulerTasksData.cs" />
+    <Compile Include="Data\EF\EFSendersData.cs" />
+    <Compile Include="Data\EF\EFServersData.cs" />
     <Compile Include="Data\MailsList.cs" />
     <Compile Include="Data\SchedulerTasks.cs" />
     <Compile Include="Data\Senders.cs" />

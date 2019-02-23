@@ -15,15 +15,16 @@ namespace MailSender.ViewModel
         //public ObservableCollection<SchedulerTask> SchedulerTasks { get; } = new ObservableCollection<SchedulerTask>();
         
         private ObservableCollection<SchedulerTask> _SchedulerTasks;
-        public ObservableCollection<SchedulerTask> SchedulerTasks
-        {
-            get
-            {
-                if (_SchedulerTasks != null) return _SchedulerTasks;
-                _SchedulerTasks = new ObservableCollection<SchedulerTask>(_SchedulerTasksData.GetAll());
-                return _SchedulerTasks;
-            }
-        }
+        //public ObservableCollection<SchedulerTask> SchedulerTasks
+        //{
+        //    get
+        //    {
+        //        if (_SchedulerTasks != null) return _SchedulerTasks;
+        //        _SchedulerTasks = new ObservableCollection<SchedulerTask>(_SchedulerTasksData.GetAll());
+        //        return _SchedulerTasks;
+        //    }
+        //}
+        public ObservableCollection<SchedulerTask> SchedulerTasks { get; } = new ObservableCollection<SchedulerTask>();
 
         public ICommand UpdateSchedulerTasksCommand { get; }
 
@@ -56,6 +57,11 @@ namespace MailSender.ViewModel
             UpdateSchedulerTasksCommand = new RelayCommand(OnUpdateSchedulerTasksCommandExecuted, CanUpdateSchedulerTasksCommandExecuted);
 
             _SchedulerTasksData = SchedulerTasksData;
+
+            foreach (var item in SchedulerTasksData.GetAll())
+            {
+                SchedulerTasks.Add(item);
+            }
         }
 
         #endregion

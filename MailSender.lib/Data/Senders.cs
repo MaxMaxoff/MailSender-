@@ -4,11 +4,11 @@ namespace MailSender.lib.Data
 {
     public class Senders
     {
-        private readonly List<Sender> Items = new List<Sender>
+        public static readonly List<Sender> Items = new List<Sender>
         {
-            new Sender{Id = 1, Name = "Иванов", Address = "ivanov@yandex.ru"},
-            new Sender{Id = 2, Name = "Петров", Address = "petrov@yandex.ru"},
-            new Sender{Id = 3, Name = "Сидоров", Address = "sidorov@yandex.ru"},
+            new Sender{Name = "Иванов", Address = "ivanov@yandex.ru"},
+            new Sender{Name = "Петров", Address = "petrov@yandex.ru"},
+            new Sender{Name = "Сидоров", Address = "sidorov@yandex.ru"},
         };
     }
 }
