@@ -47,10 +47,10 @@ namespace C3_HomeWork6_Task1
                                                      "Напишите приложение, производящее параллельное умножение матриц.\r\n" +
                                                      "Матрицы заполняются случайными целыми числами от 0 до10.");
 
-            string _fileNameA = @"D:\Projects\C#\matrix_a.csv";
-            string _fileNameB = @"D:\Projects\C#\matrix_b.csv";
-            string _fileNameOut = @"D:\Projects\C#\matrix_res.csv";
-            string _fileNameOutP = @"D:\Projects\C#\matrix_resP.csv";
+            //string _fileNameA = @"D:\Projects\C#\matrix_a.csv";
+            //string _fileNameB = @"D:\Projects\C#\matrix_b.csv";
+            //string _fileNameOut = @"D:\Projects\C#\matrix_res.csv";
+            //string _fileNameOutP = @"D:\Projects\C#\matrix_resP.csv";
 
             //// read first matrix from file
             //Console.WriteLine($"Read {_fileNameA} file");

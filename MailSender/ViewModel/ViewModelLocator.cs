@@ -1,9 +1,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
-using MailSender.Infrastructure; //SimpleIoc.Default.Register<IMailService, DebugMailService>();
-using MailSender.lib; //SimpleIoc.Default.Register<IMailService, MailService>();
-using MailSender.lib.Data.InMemory;
-using MailSender.lib.Data.Linq2SQL;
+using MailSender.Infrastructure;
+using MailSender.lib.Data;
 using MailSender.lib.Interfaces;
 
 namespace MailSender.ViewModel
@@ -26,21 +24,14 @@ namespace MailSender.ViewModel
             //SimpleIoc.Default.Register<IMailService, MailService>();
 
             // InMemory for Debug
-            SimpleIoc.Default.Register<IData<Recipient>, InMemoryRecipientsData>();
-            SimpleIoc.Default.Register<IData<Server>, InMemoryServersData>();
-            SimpleIoc.Default.Register<IData<Sender>, InMemorySendersData>();
-            SimpleIoc.Default.Register<IData<SchedulerTask>, InMemorySchedulerTasksData>();
-            SimpleIoc.Default.Register<IData<Mail>, InMemoryMailsData>();
+            SimpleIoc.Default.Register<IData<Recipient>, Recipients>();
+            SimpleIoc.Default.Register<IData<Server>, Servers>();
+            SimpleIoc.Default.Register<IData<Sender>, Senders>();
+            SimpleIoc.Default.Register<IData<SchedulerTask>, SchedulerTasks>();
+            SimpleIoc.Default.Register<IData<Mail>, Mails>();
 
-            // InLinq2SQL for real data
-            //SimpleIoc.Default.Register<IData<Recipient>, InLinq2SQLRecipientsData>();
-            //SimpleIoc.Default.Register<IData<Server>, InLinq2SQLServersData>();
-            //SimpleIoc.Default.Register<IData<Sender>, InLinq2SQLSendersData>();
-            //SimpleIoc.Default.Register<IData<SchedulerTask>, InLinq2SQLSchedulerTasksData>();
-            //SimpleIoc.Default.Register<IData<Mail>, InLinq2SQLMailsData>();
-
-            if (!SimpleIoc.Default.IsRegistered<MailDataBaseContext>())
-                SimpleIoc.Default.Register(() => new MailDataBaseContext());
+            //if (!SimpleIoc.Default.IsRegistered<MailDataBaseContext>())
+            //    SimpleIoc.Default.Register(() => new MailDataBaseContext());
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();

@@ -44,25 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataBase.cs" />
-    <Compile Include="Data\DebugData\SchedulerTasks.cs" />
-    <Compile Include="Data\DebugData\Senders.cs" />
-    <Compile Include="Data\DebugData\Servers.cs" />
-    <Compile Include="Data\InMemory\InMemoryMailsData.cs" />
-    <Compile Include="Data\InMemory\InMemoryRecipientsData.cs" />
-    <Compile Include="Data\InMemory\InMemorySchedulerTasksData.cs" />
-    <Compile Include="Data\InMemory\InMemorySendersData.cs" />
-    <Compile Include="Data\InMemory\InMemoryServersData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLMailsData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLRecipientsData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLSchedulerTasksData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLSendersData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLServersData.cs" />
-    <Compile Include="Data\Linq2SQL\MailDataBase.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MailDataBase.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Linq2SQL\Recipient.cs" />
+    <Compile Include="Data\SchedulerTasks.cs" />
+    <Compile Include="Data\Senders.cs" />
+    <Compile Include="Data\Servers.cs" />
+    <Compile Include="Data\Mails.cs" />
+    <Compile Include="Data\Recipients.cs" />
+    <Compile Include="Data\Mail.cs" />
+    <Compile Include="Data\Recipient.cs" />
+    <Compile Include="Data\SchedulerTask.cs" />
+    <Compile Include="Data\Sender.cs" />
+    <Compile Include="Data\Server.cs" />
     <Compile Include="Interfaces\IData.cs" />
     <Compile Include="Interfaces\IMailService.cs" />
     <Compile Include="Interfaces\IMainViewModel.cs" />
@@ -83,19 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Data\Linq2SQL\MailDataBase.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>MailDataBase.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\Linq2SQL\MailDataBase.dbml.layout">
-      <DependentUpon>MailDataBase.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

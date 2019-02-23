@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace MailSender
 {
@@ -45,11 +43,5 @@ namespace MailSender
             MessageBox.Show("Письмо отправлено!", "Успех!",
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
-        //public bool IsRichTextBoxEmpty(RichTextBox rtb)
-        //{
-        //    string text = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text;
-        //    return String.IsNullOrWhiteSpace(text);
-        //}
     }
 }

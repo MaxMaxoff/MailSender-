@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using MailSender.lib.Data.Linq2SQL;
+using MailSender.lib.Data;
 using MailSender.lib.Interfaces;
 
 namespace MailSender.ViewModel

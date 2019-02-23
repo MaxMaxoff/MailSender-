@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MailSender.lib.Data.Linq2SQL;
 using MailSender.lib.Interfaces;
 using MailSender.lib.Services;
 
-namespace MailSender.lib.Data.InMemory
+namespace MailSender.lib.Data
 {
-    public class InMemorySendersData : IData<Sender>
+    public class Senders : IData<Sender>
     {
         private readonly List<Sender> _Senders = new List<Sender>
         {
-            new Sender{Id = 1, Name = "Иванов", Address = "ivanov@yandex.ru", Password = PasswordService.Encrypt("Password1")},
-            new Sender{Id = 2, Name = "Петров", Address = "petrov@yandex.ru", Password = PasswordService.Encrypt("Password2")},
-            new Sender{Id = 3, Name = "Сидоров", Address = "sidorov@yandex.ru", Password = PasswordService.Encrypt("Password3")},
+            new Sender{Id = 1, Name = "Иванов", Address = "ivanov@yandex.ru"},
+            new Sender{Id = 2, Name = "Петров", Address = "petrov@yandex.ru"},
+            new Sender{Id = 3, Name = "Сидоров", Address = "sidorov@yandex.ru"},
         };
 
         public IEnumerable<Sender> GetAll()

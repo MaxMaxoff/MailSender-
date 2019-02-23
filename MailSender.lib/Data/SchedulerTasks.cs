@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MailSender.lib.Data.Linq2SQL;
 using MailSender.lib.Interfaces;
 
-namespace MailSender.lib.Data.InMemory
+namespace MailSender.lib.Data
 {
-    public class InMemorySchedulerTasksData : IData<SchedulerTask>
+    public class SchedulerTasks : IData<SchedulerTask>
     {
         private readonly List<SchedulerTask> _SchedulerTasks = new List<SchedulerTask>
         {

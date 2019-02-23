@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MailSender.lib.Data.Linq2SQL;
 using MailSender.lib.Interfaces;
 
-namespace MailSender.lib.Data.InMemory
+namespace MailSender.lib.Data
 {
-    public class InMemoryRecipientsData : IData<Recipient>
+    public class Recipients : IData<Recipient>
     {
         private readonly List<Recipient> _Recipients = new List<Recipient>
         {
