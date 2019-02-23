@@ -24,11 +24,11 @@ namespace MailSender.ViewModel
             //SimpleIoc.Default.Register<IMailService, MailService>();
 
             // InMemory for Debug
-            SimpleIoc.Default.Register<IData<Recipient>, Recipients>();
-            SimpleIoc.Default.Register<IData<Server>, Servers>();
-            SimpleIoc.Default.Register<IData<Sender>, Senders>();
-            SimpleIoc.Default.Register<IData<SchedulerTask>, SchedulerTasks>();
-            SimpleIoc.Default.Register<IData<Mail>, Mails>();
+            SimpleIoc.Default.Register<Recipients>();
+            SimpleIoc.Default.Register<Servers>();
+            SimpleIoc.Default.Register<Senders>();
+            SimpleIoc.Default.Register<SchedulerTasks>();
+            SimpleIoc.Default.Register<Mails>();
 
             //if (!SimpleIoc.Default.IsRegistered<MailDataBaseContext>())
             //    SimpleIoc.Default.Register(() => new MailDataBaseContext());
