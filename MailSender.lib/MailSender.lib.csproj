@@ -31,8 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
@@ -43,29 +50,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\DataBase.cs" />
-    <Compile Include="Data\DebugData\SchedulerTasks.cs" />
-    <Compile Include="Data\DebugData\Senders.cs" />
-    <Compile Include="Data\DebugData\Servers.cs" />
-    <Compile Include="Data\InMemory\InMemoryMailsData.cs" />
-    <Compile Include="Data\InMemory\InMemoryRecipientsData.cs" />
-    <Compile Include="Data\InMemory\InMemorySchedulerTasksData.cs" />
-    <Compile Include="Data\InMemory\InMemorySendersData.cs" />
-    <Compile Include="Data\InMemory\InMemoryServersData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLMailsData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLRecipientsData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLSchedulerTasksData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLSendersData.cs" />
-    <Compile Include="Data\Linq2SQL\InLinq2SQLServersData.cs" />
-    <Compile Include="Data\Linq2SQL\MailDataBase.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MailDataBase.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Linq2SQL\Recipient.cs" />
+    <Compile Include="Data\Context\MailDatabaseContext.cs" />
+    <Compile Include="Data\EF\EFMailsData.cs" />
+    <Compile Include="Data\EF\EFRecipientsData.cs" />
+    <Compile Include="Data\EF\EFSchedulerTasksData.cs" />
+    <Compile Include="Data\EF\EFSendersData.cs" />
+    <Compile Include="Data\EF\EFServersData.cs" />
+    <Compile Include="Data\MailsList.cs" />
+    <Compile Include="Data\SchedulerTasks.cs" />
+    <Compile Include="Data\Senders.cs" />
+    <Compile Include="Data\SendingList.cs" />
+    <Compile Include="Data\Servers.cs" />
+    <Compile Include="Data\Mails.cs" />
+    <Compile Include="Data\Recipients.cs" />
+    <Compile Include="Data\Mail.cs" />
+    <Compile Include="Data\Recipient.cs" />
+    <Compile Include="Data\SchedulerTask.cs" />
+    <Compile Include="Data\Sender.cs" />
+    <Compile Include="Data\Server.cs" />
     <Compile Include="Interfaces\IData.cs" />
     <Compile Include="Interfaces\IMailService.cs" />
     <Compile Include="Interfaces\IMainViewModel.cs" />
+    <Compile Include="Migrations\201902230726276_Initial.cs" />
+    <Compile Include="Migrations\201902230726276_Initial.Designer.cs">
+      <DependentUpon>201902230726276_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902230738023_Datarestriction.cs" />
+    <Compile Include="Migrations\201902230738023_Datarestriction.Designer.cs">
+      <DependentUpon>201902230738023_Datarestriction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="MVVM\Command.cs" />
     <Compile Include="MVVM\ViewModel.cs" />
@@ -82,21 +96,20 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Data\Linq2SQL\MailDataBase.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>MailDataBase.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Linq2SQL\MailDataBase.dbml.layout">
-      <DependentUpon>MailDataBase.dbml</DependentUpon>
-    </None>
+    <EmbeddedResource Include="Migrations\201902230726276_Initial.resx">
+      <DependentUpon>201902230726276_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902230738023_Datarestriction.resx">
+      <DependentUpon>201902230738023_Datarestriction.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

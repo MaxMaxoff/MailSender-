@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using MailSender.lib.Data.Linq2SQL;
+using MailSender.lib.Data;
 using MailSender.lib.Interfaces;
 
 namespace MailSender.ViewModel
@@ -15,15 +15,16 @@ namespace MailSender.ViewModel
         //public ObservableCollection<Server> Servers { get; } = new ObservableCollection<Server>();
 
         private ObservableCollection<Server> _Servers;
-        public ObservableCollection<Server> Servers
-        {
-            get
-            {
-                if (_Servers != null) return _Servers;
-                _Servers = new ObservableCollection<Server>(_ServersData.GetAll());
-                return _Servers;
-            }
-        }
+        //public ObservableCollection<Server> Servers
+        //{
+        //    get
+        //    {
+        //        if (_Servers != null) return _Servers;
+        //        _Servers = new ObservableCollection<Server>(_ServersData.GetAll());
+        //        return _Servers;
+        //    }
+        //}
+        public ObservableCollection<Server> Servers { get; } = new ObservableCollection<Server>();
 
         public ICommand UpdateServersCommand { get; }
 
@@ -56,6 +57,11 @@ namespace MailSender.ViewModel
             UpdateServersCommand = new RelayCommand(OnUpdateServersCommandExecuted, CanUpdateServersCommandExecuted);
 
             _ServersData = ServersData;
+
+            foreach (var item in ServersData.GetAll())
+            {
+                Servers.Add(item);
+            }
         }
 
         #endregion

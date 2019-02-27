@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using MailSender.lib.Data.Linq2SQL;
+using MailSender.lib.Data;
 using MailSender.lib.Interfaces;
 
 namespace MailSender.ViewModel
@@ -100,9 +100,14 @@ namespace MailSender.ViewModel
             _MailService = MailService;
             _MailsData = MailsData;
 
-            foreach (var mail in _MailsData.GetAll())
+            foreach (var item in _MailsData.GetAll())
             {
-                Mails.Add(mail);
+                Mails.Add(item);
+            }
+
+            foreach (var item in RecipientsData.GetAll())
+            {
+                Recipients.Add(item);
             }
         }
 
